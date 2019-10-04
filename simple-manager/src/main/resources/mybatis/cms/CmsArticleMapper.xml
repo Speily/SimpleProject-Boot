@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.speily.mapper.CmsArticleMapper">
+    
+    <resultMap type="CmsArticle" id="CmsArticleResult">
+        <result property="articleId"    column="article_id"    />
+        <result property="articleTittle"    column="article_tittle"    />
+        <result property="articleContext"    column="article_context"    />
+        <result property="orderNum"    column="order_num"    />
+        <result property="status"    column="status"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectCmsArticleVo">
+        select article_id, article_tittle, article_context, order_num, status, del_flag, create_by, create_time, update_by, update_time from cms_article
+    </sql>
+
+    <select id="selectCmsArticleList" parameterType="CmsArticle" resultMap="CmsArticleResult">
+        <include refid="selectCmsArticleVo"/>
+        <where>  
+            <if test="articleTittle != null  and articleTittle != ''"> and article_tittle = #{articleTittle}</if>
+            <if test="articleContext != null  and articleContext != ''"> and article_context = #{articleContext}</if>
+            <if test="orderNum != null "> and order_num = #{orderNum}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectCmsArticleById" parameterType="Long" resultMap="CmsArticleResult">
+        <include refid="selectCmsArticleVo"/>
+        where article_id = #{articleId}
+    </select>
+        
+    <insert id="insertCmsArticle" parameterType="CmsArticle" useGeneratedKeys="true" keyProperty="articleId">
+        insert into cms_article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleTittle != null  and articleTittle != ''">article_tittle,</if>
+            <if test="articleContext != null  and articleContext != ''">article_context,</if>
+            <if test="orderNum != null ">order_num,</if>
+            <if test="status != null  and status != ''">status,</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag,</if>
+            <if test="createBy != null  and createBy != ''">create_by,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleTittle != null  and articleTittle != ''">#{articleTittle},</if>
+            <if test="articleContext != null  and articleContext != ''">#{articleContext},</if>
+            <if test="orderNum != null ">#{orderNum},</if>
+            <if test="status != null  and status != ''">#{status},</if>
+            <if test="delFlag != null  and delFlag != ''">#{delFlag},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCmsArticle" parameterType="CmsArticle">
+        update cms_article
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="articleTittle != null  and articleTittle != ''">article_tittle = #{articleTittle},</if>
+            <if test="articleContext != null  and articleContext != ''">article_context = #{articleContext},</if>
+            <if test="orderNum != null ">order_num = #{orderNum},</if>
+            <if test="status != null  and status != ''">status = #{status},</if>
+            <if test="delFlag != null  and delFlag != ''">del_flag = #{delFlag},</if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+        </trim>
+        where article_id = #{articleId}
+    </update>
+
+    <delete id="deleteCmsArticleById" parameterType="Long">
+        delete from cms_article where article_id = #{articleId}
+    </delete>
+
+    <delete id="deleteCmsArticleByIds" parameterType="String">
+        delete from cms_article where article_id in 
+        <foreach item="articleId" collection="array" open="(" separator="," close=")">
+            #{articleId}
+        </foreach>
+    </delete>
+    
+</mapper>
