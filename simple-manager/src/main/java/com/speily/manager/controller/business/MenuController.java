@@ -20,13 +20,12 @@ import java.util.List;
 
 /**
  * 菜单信息
- * 
+ *
  * @author spl
  */
 @Controller
 @RequestMapping("/system/menu")
-public class MenuController extends BaseController
-{
+public class MenuController extends BaseController {
     private String prefix = "system/menu";
 
     @Autowired
@@ -34,16 +33,14 @@ public class MenuController extends BaseController
 
     @RequiresPermissions("system:menu:view")
     @GetMapping()
-    public String menu()
-    {
+    public String menu() {
         return prefix + "/menu";
     }
 
     @RequiresPermissions("system:menu:list")
     @PostMapping("/list")
     @ResponseBody
-    public List<Menu> list(Menu menu)
-    {
+    public List<Menu> list(Menu menu) {
         List<Menu> menuList = menuService.selectMenuList(menu);
         return menuList;
     }
@@ -55,14 +52,11 @@ public class MenuController extends BaseController
     @RequiresPermissions("system:menu:remove")
     @GetMapping("/remove/{menuId}")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("menuId") Long menuId)
-    {
-        if (menuService.selectCountMenuByParentId(menuId) > 0)
-        {
+    public AjaxResult remove(@PathVariable("menuId") Long menuId) {
+        if (menuService.selectCountMenuByParentId(menuId) > 0) {
             return AjaxResult.warn("存在子菜单,不允许删除");
         }
-        if (menuService.selectCountRoleMenuByMenuId(menuId) > 0)
-        {
+        if (menuService.selectCountRoleMenuByMenuId(menuId) > 0) {
             return AjaxResult.warn("菜单已分配,不允许删除");
         }
         return toAjax(menuService.deleteMenuById(menuId));
@@ -72,15 +66,11 @@ public class MenuController extends BaseController
      * 新增
      */
     @GetMapping("/add/{parentId}")
-    public String add(@PathVariable("parentId") Long parentId, ModelMap mmap)
-    {
+    public String add(@PathVariable("parentId") Long parentId, ModelMap mmap) {
         Menu menu = null;
-        if (0L != parentId)
-        {
+        if (0L != parentId) {
             menu = menuService.selectMenuById(parentId);
-        }
-        else
-        {
+        } else {
             menu = new Menu();
             menu.setMenuId(0L);
             menu.setMenuName("主目录");
@@ -96,10 +86,8 @@ public class MenuController extends BaseController
     @RequiresPermissions("system:menu:add")
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(@Validated Menu menu)
-    {
-        if (UserConstants.MENU_NAME_NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu)))
-        {
+    public AjaxResult addSave(@Validated Menu menu) {
+        if (UserConstants.MENU_NAME_NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu))) {
             return error("新增菜单'" + menu.getMenuName() + "'失败，菜单名称已存在");
         }
         return toAjax(menuService.insertMenu(menu));
@@ -109,8 +97,7 @@ public class MenuController extends BaseController
      * 修改菜单
      */
     @GetMapping("/edit/{menuId}")
-    public String edit(@PathVariable("menuId") Long menuId, ModelMap mmap)
-    {
+    public String edit(@PathVariable("menuId") Long menuId, ModelMap mmap) {
         mmap.put("menu", menuService.selectMenuById(menuId));
         return prefix + "/edit";
     }
@@ -122,10 +109,8 @@ public class MenuController extends BaseController
     @RequiresPermissions("system:menu:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated Menu menu)
-    {
-        if (UserConstants.MENU_NAME_NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu)))
-        {
+    public AjaxResult editSave(@Validated Menu menu) {
+        if (UserConstants.MENU_NAME_NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu))) {
             return error("修改菜单'" + menu.getMenuName() + "'失败，菜单名称已存在");
         }
         return toAjax(menuService.updateMenu(menu));
@@ -135,8 +120,7 @@ public class MenuController extends BaseController
      * 选择菜单图标
      */
     @GetMapping("/icon")
-    public String icon()
-    {
+    public String icon() {
         return prefix + "/icon";
     }
 
@@ -145,8 +129,7 @@ public class MenuController extends BaseController
      */
     @PostMapping("/checkMenuNameUnique")
     @ResponseBody
-    public String checkMenuNameUnique(Menu menu)
-    {
+    public String checkMenuNameUnique(Menu menu) {
         return menuService.checkMenuNameUnique(menu);
     }
 
@@ -155,8 +138,7 @@ public class MenuController extends BaseController
      */
     @GetMapping("/roleMenuTreeData")
     @ResponseBody
-    public List<Ztree> roleMenuTreeData(Role role)
-    {
+    public List<Ztree> roleMenuTreeData(Role role) {
         List<Ztree> ztrees = menuService.roleMenuTreeData(role);
         return ztrees;
     }
@@ -166,8 +148,7 @@ public class MenuController extends BaseController
      */
     @GetMapping("/menuTreeData")
     @ResponseBody
-    public List<Ztree> menuTreeData(Role role)
-    {
+    public List<Ztree> menuTreeData(Role role) {
         List<Ztree> ztrees = menuService.menuTreeData();
         return ztrees;
     }
@@ -176,8 +157,7 @@ public class MenuController extends BaseController
      * 选择菜单树
      */
     @GetMapping("/selectMenuTree/{menuId}")
-    public String selectMenuTree(@PathVariable("menuId") Long menuId, ModelMap mmap)
-    {
+    public String selectMenuTree(@PathVariable("menuId") Long menuId, ModelMap mmap) {
         mmap.put("menu", menuService.selectMenuById(menuId));
         return prefix + "/tree";
     }

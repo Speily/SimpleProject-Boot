@@ -19,13 +19,12 @@ import java.io.IOException;
 
 /**
  * 图片验证码（支持算术形式）
- * 
+ *
  * @author spl
  */
 @Controller
 @RequestMapping("/captcha")
-public class CaptchaController extends BaseController
-{
+public class CaptchaController extends BaseController {
     @Resource(name = "captchaProducer")
     private Producer captchaProducer;
 
@@ -36,11 +35,9 @@ public class CaptchaController extends BaseController
      * 验证码生成
      */
     @GetMapping(value = "/captchaImage")
-    public ModelAndView getKaptchaImage(HttpServletRequest request, HttpServletResponse response)
-    {
+    public ModelAndView getKaptchaImage(HttpServletRequest request, HttpServletResponse response) {
         ServletOutputStream out = null;
-        try
-        {
+        try {
             HttpSession session = request.getSession();
             response.setDateHeader("Expires", 0);
             response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
@@ -52,15 +49,12 @@ public class CaptchaController extends BaseController
             String capStr = null;
             String code = null;
             BufferedImage bi = null;
-            if ("math".equals(type))
-            {
+            if ("math".equals(type)) {
                 String capText = captchaProducerMath.createText();
                 capStr = capText.substring(0, capText.lastIndexOf("@"));
                 code = capText.substring(capText.lastIndexOf("@") + 1);
                 bi = captchaProducerMath.createImage(capStr);
-            }
-            else if ("char".equals(type))
-            {
+            } else if ("char".equals(type)) {
                 capStr = code = captchaProducer.createText();
                 bi = captchaProducer.createImage(capStr);
             }
@@ -69,22 +63,14 @@ public class CaptchaController extends BaseController
             ImageIO.write(bi, "jpg", out);
             out.flush();
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
-                if (out != null)
-                {
+        } finally {
+            try {
+                if (out != null) {
                     out.close();
                 }
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

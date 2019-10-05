@@ -20,13 +20,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 个人信息 业务处理
- * 
+ *
  * @author spl
  */
 @Controller
 @RequestMapping("/system/user/profile")
-public class ProfileController extends BaseController
-{
+public class ProfileController extends BaseController {
     private static final Logger log = LoggerFactory.getLogger(ProfileController.class);
 
     private String prefix = "system/user/profile";
@@ -41,8 +40,7 @@ public class ProfileController extends BaseController
      * 个人信息
      */
     @GetMapping()
-    public String profile(ModelMap mmap)
-    {
+    public String profile(ModelMap mmap) {
         User user = getSysUser();
         mmap.put("user", user);
         mmap.put("roleGroup", userService.selectUserRoleGroup(user.getUserId()));
@@ -52,19 +50,16 @@ public class ProfileController extends BaseController
 
     @GetMapping("/checkPassword")
     @ResponseBody
-    public boolean checkPassword(String password)
-    {
+    public boolean checkPassword(String password) {
         User user = getSysUser();
-        if (passwordService.matches(user, password))
-        {
+        if (passwordService.matches(user, password)) {
             return true;
         }
         return false;
     }
 
     @GetMapping("/resetPwd")
-    public String resetPwd(ModelMap mmap)
-    {
+    public String resetPwd(ModelMap mmap) {
         User user = getSysUser();
         mmap.put("user", userService.selectUserById(user.getUserId()));
         return prefix + "/resetPwd";
@@ -73,21 +68,16 @@ public class ProfileController extends BaseController
     @Log(title = "重置密码", businessType = BusinessType.UPDATE)
     @PostMapping("/resetPwd")
     @ResponseBody
-    public AjaxResult resetPwd(String oldPassword, String newPassword)
-    {
+    public AjaxResult resetPwd(String oldPassword, String newPassword) {
         User user = getSysUser();
-        if (StringUtils.isNotEmpty(newPassword) && passwordService.matches(user, oldPassword))
-        {
+        if (StringUtils.isNotEmpty(newPassword) && passwordService.matches(user, oldPassword)) {
             user.setPassword(newPassword);
-            if (userService.resetUserPwd(user) > 0)
-            {
+            if (userService.resetUserPwd(user) > 0) {
                 setSysUser(userService.selectUserById(user.getUserId()));
                 return success();
             }
             return error();
-        }
-        else
-        {
+        } else {
             return error("修改密码失败，旧密码错误");
         }
 
@@ -97,8 +87,7 @@ public class ProfileController extends BaseController
      * 修改用户
      */
     @GetMapping("/edit")
-    public String edit(ModelMap mmap)
-    {
+    public String edit(ModelMap mmap) {
         User user = getSysUser();
         mmap.put("user", userService.selectUserById(user.getUserId()));
         return prefix + "/edit";
@@ -108,8 +97,7 @@ public class ProfileController extends BaseController
      * 修改头像
      */
     @GetMapping("/avatar")
-    public String avatar(ModelMap mmap)
-    {
+    public String avatar(ModelMap mmap) {
         User user = getSysUser();
         mmap.put("user", userService.selectUserById(user.getUserId()));
         return prefix + "/avatar";
@@ -121,15 +109,13 @@ public class ProfileController extends BaseController
     @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PostMapping("/update")
     @ResponseBody
-    public AjaxResult update(User user)
-    {
+    public AjaxResult update(User user) {
         User currentUser = getSysUser();
         currentUser.setUserName(user.getUserName());
         currentUser.setEmail(user.getEmail());
         currentUser.setPhonenumber(user.getPhonenumber());
         currentUser.setSex(user.getSex());
-        if (userService.updateUserInfo(currentUser) > 0)
-        {
+        if (userService.updateUserInfo(currentUser) > 0) {
             setSysUser(userService.selectUserById(currentUser.getUserId()));
             return success();
         }
@@ -142,25 +128,19 @@ public class ProfileController extends BaseController
     @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PostMapping("/updateAvatar")
     @ResponseBody
-    public AjaxResult updateAvatar(@RequestParam("avatarfile") MultipartFile file)
-    {
+    public AjaxResult updateAvatar(@RequestParam("avatarfile") MultipartFile file) {
         User currentUser = getSysUser();
-        try
-        {
-            if (!file.isEmpty())
-            {
+        try {
+            if (!file.isEmpty()) {
                 String avatar = FileUploadUtils.upload(ProjectConfig.getAvatarPath(), file);
                 currentUser.setAvatar(avatar);
-                if (userService.updateUserInfo(currentUser) > 0)
-                {
+                if (userService.updateUserInfo(currentUser) > 0) {
                     setSysUser(userService.selectUserById(currentUser.getUserId()));
                     return success();
                 }
             }
             return error();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("修改头像失败！", e);
             return error(e.getMessage());
         }

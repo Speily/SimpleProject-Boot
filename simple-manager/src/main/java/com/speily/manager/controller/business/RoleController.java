@@ -23,13 +23,12 @@ import java.util.List;
 
 /**
  * 角色信息
- * 
+ *
  * @author spl
  */
 @Controller
 @RequestMapping("/system/role")
-public class RoleController extends BaseController
-{
+public class RoleController extends BaseController {
     private String prefix = "system/role";
 
     @Autowired
@@ -40,16 +39,14 @@ public class RoleController extends BaseController
 
     @RequiresPermissions("system:role:view")
     @GetMapping()
-    public String role()
-    {
+    public String role() {
         return prefix + "/role";
     }
 
     @RequiresPermissions("system:role:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Role role)
-    {
+    public TableDataInfo list(Role role) {
         startPage();
         List<Role> list = roleService.selectRoleList(role);
         return getDataTable(list);
@@ -59,8 +56,7 @@ public class RoleController extends BaseController
     @RequiresPermissions("system:role:export")
     @PostMapping("/export")
     @ResponseBody
-    public AjaxResult export(Role role)
-    {
+    public AjaxResult export(Role role) {
         List<Role> list = roleService.selectRoleList(role);
         ExcelUtil<Role> util = new ExcelUtil<Role>(Role.class);
         return util.exportExcel(list, "角色数据");
@@ -70,8 +66,7 @@ public class RoleController extends BaseController
      * 新增角色
      */
     @GetMapping("/add")
-    public String add()
-    {
+    public String add() {
         return prefix + "/add";
     }
 
@@ -82,14 +77,10 @@ public class RoleController extends BaseController
     @Log(title = "角色管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(@Validated Role role)
-    {
-        if (UserConstants.ROLE_NAME_NOT_UNIQUE.equals(roleService.checkRoleNameUnique(role)))
-        {
+    public AjaxResult addSave(@Validated Role role) {
+        if (UserConstants.ROLE_NAME_NOT_UNIQUE.equals(roleService.checkRoleNameUnique(role))) {
             return error("新增角色'" + role.getRoleName() + "'失败，角色名称已存在");
-        }
-        else if (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role)))
-        {
+        } else if (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role))) {
             return error("新增角色'" + role.getRoleName() + "'失败，角色权限已存在");
         }
         return toAjax(roleService.insertRole(role));
@@ -100,8 +91,7 @@ public class RoleController extends BaseController
      * 修改角色
      */
     @GetMapping("/edit/{roleId}")
-    public String edit(@PathVariable("roleId") Long roleId, ModelMap mmap)
-    {
+    public String edit(@PathVariable("roleId") Long roleId, ModelMap mmap) {
         mmap.put("role", roleService.selectRoleById(roleId));
         return prefix + "/edit";
     }
@@ -113,14 +103,10 @@ public class RoleController extends BaseController
     @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated Role role)
-    {
-        if (UserConstants.ROLE_NAME_NOT_UNIQUE.equals(roleService.checkRoleNameUnique(role)))
-        {
+    public AjaxResult editSave(@Validated Role role) {
+        if (UserConstants.ROLE_NAME_NOT_UNIQUE.equals(roleService.checkRoleNameUnique(role))) {
             return error("修改角色'" + role.getRoleName() + "'失败，角色名称已存在");
-        }
-        else if (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role)))
-        {
+        } else if (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role))) {
             return error("修改角色'" + role.getRoleName() + "'失败，角色权限已存在");
         }
         return toAjax(roleService.updateRole(role));
@@ -130,8 +116,7 @@ public class RoleController extends BaseController
      * 角色分配数据权限
      */
     @GetMapping("/authDataScope/{roleId}")
-    public String authDataScope(@PathVariable("roleId") Long roleId, ModelMap mmap)
-    {
+    public String authDataScope(@PathVariable("roleId") Long roleId, ModelMap mmap) {
         mmap.put("role", roleService.selectRoleById(roleId));
         return prefix + "/dataScope";
     }
@@ -143,10 +128,8 @@ public class RoleController extends BaseController
     @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PostMapping("/authDataScope")
     @ResponseBody
-    public AjaxResult authDataScopeSave(Role role)
-    {
-        if (roleService.authDataScope(role) > 0)
-        {
+    public AjaxResult authDataScopeSave(Role role) {
+        if (roleService.authDataScope(role) > 0) {
             setSysUser(userService.selectUserById(getSysUser().getUserId()));
             return success();
         }
@@ -157,14 +140,10 @@ public class RoleController extends BaseController
     @Log(title = "角色管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
-    public AjaxResult remove(String ids)
-    {
-        try
-        {
+    public AjaxResult remove(String ids) {
+        try {
             return toAjax(roleService.deleteRoleByIds(ids));
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return error(e.getMessage());
         }
     }
@@ -174,8 +153,7 @@ public class RoleController extends BaseController
      */
     @PostMapping("/checkRoleNameUnique")
     @ResponseBody
-    public String checkRoleNameUnique(Role role)
-    {
+    public String checkRoleNameUnique(Role role) {
         return roleService.checkRoleNameUnique(role);
     }
 
@@ -184,8 +162,7 @@ public class RoleController extends BaseController
      */
     @PostMapping("/checkRoleKeyUnique")
     @ResponseBody
-    public String checkRoleKeyUnique(Role role)
-    {
+    public String checkRoleKeyUnique(Role role) {
         return roleService.checkRoleKeyUnique(role);
     }
 
@@ -193,8 +170,7 @@ public class RoleController extends BaseController
      * 选择菜单树
      */
     @GetMapping("/selectMenuTree")
-    public String selectMenuTree()
-    {
+    public String selectMenuTree() {
         return prefix + "/tree";
     }
 
@@ -205,8 +181,7 @@ public class RoleController extends BaseController
     @RequiresPermissions("system:role:edit")
     @PostMapping("/changeStatus")
     @ResponseBody
-    public AjaxResult changeStatus(Role role)
-    {
+    public AjaxResult changeStatus(Role role) {
         return toAjax(roleService.changeStatus(role));
     }
 
@@ -215,8 +190,7 @@ public class RoleController extends BaseController
      */
     @RequiresPermissions("system:role:edit")
     @GetMapping("/authUser/{roleId}")
-    public String authUser(@PathVariable("roleId") Long roleId, ModelMap mmap)
-    {
+    public String authUser(@PathVariable("roleId") Long roleId, ModelMap mmap) {
         mmap.put("role", roleService.selectRoleById(roleId));
         return prefix + "/authUser";
     }
@@ -227,8 +201,7 @@ public class RoleController extends BaseController
     @RequiresPermissions("system:role:list")
     @PostMapping("/authUser/allocatedList")
     @ResponseBody
-    public TableDataInfo allocatedList(User user)
-    {
+    public TableDataInfo allocatedList(User user) {
         startPage();
         List<User> list = userService.selectAllocatedList(user);
         return getDataTable(list);
@@ -240,8 +213,7 @@ public class RoleController extends BaseController
     @Log(title = "角色管理", businessType = BusinessType.GRANT)
     @PostMapping("/authUser/cancel")
     @ResponseBody
-    public AjaxResult cancelAuthUser(UserRole userRole)
-    {
+    public AjaxResult cancelAuthUser(UserRole userRole) {
         return toAjax(roleService.deleteAuthUser(userRole));
     }
 
@@ -251,8 +223,7 @@ public class RoleController extends BaseController
     @Log(title = "角色管理", businessType = BusinessType.GRANT)
     @PostMapping("/authUser/cancelAll")
     @ResponseBody
-    public AjaxResult cancelAuthUserAll(Long roleId, String userIds)
-    {
+    public AjaxResult cancelAuthUserAll(Long roleId, String userIds) {
         return toAjax(roleService.deleteAuthUsers(roleId, userIds));
     }
 
@@ -260,8 +231,7 @@ public class RoleController extends BaseController
      * 选择用户
      */
     @GetMapping("/authUser/selectUser/{roleId}")
-    public String selectUser(@PathVariable("roleId") Long roleId, ModelMap mmap)
-    {
+    public String selectUser(@PathVariable("roleId") Long roleId, ModelMap mmap) {
         mmap.put("role", roleService.selectRoleById(roleId));
         return prefix + "/selectUser";
     }
@@ -272,8 +242,7 @@ public class RoleController extends BaseController
     @RequiresPermissions("system:role:list")
     @PostMapping("/authUser/unallocatedList")
     @ResponseBody
-    public TableDataInfo unallocatedList(User user)
-    {
+    public TableDataInfo unallocatedList(User user) {
         startPage();
         List<User> list = userService.selectUnallocatedList(user);
         return getDataTable(list);
@@ -285,8 +254,7 @@ public class RoleController extends BaseController
     @Log(title = "角色管理", businessType = BusinessType.GRANT)
     @PostMapping("/authUser/selectAll")
     @ResponseBody
-    public AjaxResult selectAuthUserAll(Long roleId, String userIds)
-    {
+    public AjaxResult selectAuthUserAll(Long roleId, String userIds) {
         return toAjax(roleService.insertAuthUsers(roleId, userIds));
     }
 }
