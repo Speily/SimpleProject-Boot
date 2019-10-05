@@ -1,7 +1,7 @@
 package com.speily.framework.gen;
 
 import com.alibaba.fastjson.JSONObject;
-import com.speily.common.constant.GenConstants;
+import com.speily.entity.base.GenConstants;
 import com.speily.common.utils.DateUtils;
 import com.speily.common.utils.StringUtils;
 import com.speily.entity.GenTable;

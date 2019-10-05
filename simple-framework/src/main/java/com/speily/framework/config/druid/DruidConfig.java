@@ -1,11 +1,11 @@
-package com.speily.framework.config;
+package com.speily.framework.config.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties;
 import com.alibaba.druid.util.Utils;
 import com.speily.common.aspectj.lang.enums.DataSourceType;
-import com.speily.framework.config.properties.DruidProperties;
+import com.speily.framework.config.druid.DruidProperties;
 import com.speily.framework.datasource.DynamicDataSource;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;

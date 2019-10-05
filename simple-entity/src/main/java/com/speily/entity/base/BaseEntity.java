@@ -1,4 +1,4 @@
-package com.speily.common;
+package com.speily.entity.base;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.collect.Maps;

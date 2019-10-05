@@ -1,6 +1,6 @@
 package com.speily.entity;
 
-import com.speily.common.BaseEntity;
+import com.speily.entity.base.BaseEntity;
 import com.speily.entity.OnlineSession.OnlineStatus;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

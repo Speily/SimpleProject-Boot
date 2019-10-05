@@ -1,6 +1,6 @@
 package com.speily.service.impl;
 
-import com.speily.common.constant.UserConstants;
+import com.speily.entity.base.UserConstants;
 import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.text.Convert;
 import com.speily.entity.Config;

@@ -1,6 +1,5 @@
 package com.speily.common.utils;
 
-import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.text.Convert;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;

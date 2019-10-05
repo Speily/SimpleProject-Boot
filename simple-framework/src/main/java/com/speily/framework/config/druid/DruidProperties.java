@@ -1,4 +1,4 @@
-package com.speily.framework.config.properties;
+package com.speily.framework.config.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Value;

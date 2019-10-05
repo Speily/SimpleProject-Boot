@@ -1,6 +1,6 @@
 package com.speily.service.impl;
 
-import com.speily.common.constant.UserConstants;
+import com.speily.entity.base.UserConstants;
 import com.speily.common.exception.BusinessException;
 import com.speily.common.result.Ztree;
 import com.speily.common.utils.StringUtils;

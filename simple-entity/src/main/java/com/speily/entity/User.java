@@ -1,10 +1,10 @@
 package com.speily.entity;
 
-import com.speily.common.BaseEntity;
-import com.speily.common.aspectj.lang.annotation.Excel;
-import com.speily.common.aspectj.lang.annotation.Excel.ColumnType;
-import com.speily.common.aspectj.lang.annotation.Excel.Type;
-import com.speily.common.aspectj.lang.annotation.Excels;
+import com.speily.entity.base.BaseEntity;
+import com.speily.entity.base.Excel;
+import com.speily.entity.base.Excel.ColumnType;
+import com.speily.entity.base.Excel.Type;
+import com.speily.entity.base.Excels;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;

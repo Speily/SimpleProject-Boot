@@ -1,4 +1,4 @@
-package com.speily.common.constant;
+package com.speily.entity.base;
 
 /**
  * 用户常量信息

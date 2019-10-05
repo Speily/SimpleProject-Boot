@@ -1,7 +1,7 @@
 package com.speily.manager;
 
 import com.speily.common.utils.StringUtils;
-import com.speily.common.BaseEntity;
+import com.speily.entity.base.BaseEntity;
 import com.speily.entity.Role;
 import com.speily.entity.User;
 import com.speily.common.aspectj.lang.annotation.DataScope;

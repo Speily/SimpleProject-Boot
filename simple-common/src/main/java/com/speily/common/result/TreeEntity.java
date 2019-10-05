@@ -1,7 +1,7 @@
 package com.speily.common.result;
 
 
-import com.speily.common.BaseEntity;
+import com.speily.entity.base.BaseEntity;
 
 /**
  * Tree基类

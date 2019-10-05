@@ -1,8 +1,8 @@
 package com.speily.entity;
 
-import com.speily.common.BaseEntity;
-import com.speily.common.constant.GenConstants;
-import com.speily.common.utils.StringUtils;
+import com.speily.entity.base.BaseEntity;
+import com.speily.entity.base.GenConstants;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;

@@ -1,7 +1,7 @@
 package com.speily.entity;
 
-import com.speily.common.BaseEntity;
-import com.speily.common.utils.StringUtils;
+import com.speily.entity.base.BaseEntity;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotBlank;
 

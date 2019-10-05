@@ -1,9 +1,8 @@
 package com.speily.entity;
 
-import com.speily.common.BaseEntity;
-import com.speily.common.constant.UserConstants;
-import com.speily.common.aspectj.lang.annotation.Excel;
-import com.speily.common.aspectj.lang.annotation.Excel.ColumnType;
+import com.speily.entity.base.BaseEntity;
+import com.speily.entity.base.Excel;
+import com.speily.entity.base.Excel.ColumnType;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -135,7 +134,7 @@ public class DictData extends BaseEntity {
     }
 
     public boolean getDefault() {
-        return UserConstants.YES.equals(this.isDefault) ? true : false;
+        return "Y".equals(this.isDefault) ? true : false;
     }
 
     public String getIsDefault() {

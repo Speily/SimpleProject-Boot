@@ -1,6 +1,6 @@
 package ${packageName}.entity;
 
-import com.speily.common.aspectj.lang.annotation.Excel;
+import com.speily.entity.base.Excel;
 #if($table.crud)
 #elseif($table.tree)
 #end

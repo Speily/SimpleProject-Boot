@@ -1,4 +1,4 @@
-package com.speily.common.constant;
+package com.speily.entity.base;
 
 /**
  * 代码生成通用常量

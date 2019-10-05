@@ -1,6 +1,6 @@
 package com.speily.manager.controller.business;
 
-import com.speily.common.constant.UserConstants;
+import com.speily.entity.base.UserConstants;
 import com.speily.entity.Menu;
 import com.speily.entity.Role;
 import com.speily.common.aspectj.lang.annotation.Log;

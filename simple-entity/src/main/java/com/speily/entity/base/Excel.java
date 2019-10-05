@@ -1,4 +1,4 @@
-package com.speily.common.aspectj.lang.annotation;
+package com.speily.entity.base;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

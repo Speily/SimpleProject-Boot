@@ -1,11 +1,8 @@
 package com.speily.entity;
 
-import com.speily.common.BaseEntity;
-import com.speily.common.constant.ScheduleConstants;
-import com.speily.common.utils.StringUtils;
-import com.speily.common.aspectj.lang.annotation.Excel;
-import com.speily.common.aspectj.lang.annotation.Excel.ColumnType;
-import com.speily.common.utils.CronUtils;
+import com.speily.entity.base.BaseEntity;
+import com.speily.entity.base.Excel;
+import com.speily.entity.base.Excel.ColumnType;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -56,7 +53,7 @@ public class Job extends BaseEntity implements Serializable {
      * cron计划策略
      */
     @Excel(name = "计划策略 ", readConverterExp = "0=默认,1=立即触发执行,2=触发一次执行,3=不触发立即执行")
-    private String misfirePolicy = ScheduleConstants.MISFIRE_DEFAULT;
+    private String misfirePolicy = "0";
 
     /**
      * 是否并发执行（0允许 1禁止）
@@ -116,13 +113,6 @@ public class Job extends BaseEntity implements Serializable {
         this.cronExpression = cronExpression;
     }
 
-    public Date getNextValidTime() {
-        if (StringUtils.isNotEmpty(cronExpression)) {
-            return CronUtils.getNextExecution(cronExpression);
-        }
-        return null;
-    }
-
     public String getMisfirePolicy() {
         return misfirePolicy;
     }
@@ -154,7 +144,6 @@ public class Job extends BaseEntity implements Serializable {
                 .append("jobName", getJobName())
                 .append("jobGroup", getJobGroup())
                 .append("cronExpression", getCronExpression())
-                .append("nextValidTime", getNextValidTime())
                 .append("misfirePolicy", getMisfirePolicy())
                 .append("concurrent", getConcurrent())
                 .append("status", getStatus())

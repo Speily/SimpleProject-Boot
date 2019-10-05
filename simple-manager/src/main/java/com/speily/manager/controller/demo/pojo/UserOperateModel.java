@@ -1,9 +1,9 @@
 package com.speily.manager.controller.demo.pojo;
 
 import com.speily.common.utils.DateUtils;
-import com.speily.common.BaseEntity;
-import com.speily.common.aspectj.lang.annotation.Excel;
-import com.speily.common.aspectj.lang.annotation.Excel.Type;
+import com.speily.entity.base.BaseEntity;
+import com.speily.entity.base.Excel;
+import com.speily.entity.base.Excel.Type;
 
 import java.util.Date;
 

@@ -12,7 +12,7 @@ import javax.servlet.DispatcherType;
 import java.util.Map;
 
 /**
- * Filter配置
+ * Filter配置,注册自定义web过滤器{@link FilterRegistrationBean}
  *
  * @author spl
  */

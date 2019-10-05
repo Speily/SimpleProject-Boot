@@ -2,7 +2,7 @@ package com.speily.service;
 
 import com.speily.common.constant.Constants;
 import com.speily.common.constant.ShiroConstants;
-import com.speily.common.constant.UserConstants;
+import com.speily.entity.base.UserConstants;
 import com.speily.common.exception.user.*;
 import com.speily.common.manager.AsyncManager;
 import com.speily.common.utils.DateUtils;

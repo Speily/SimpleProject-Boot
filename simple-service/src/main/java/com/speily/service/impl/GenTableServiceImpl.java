@@ -3,7 +3,7 @@ package com.speily.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.speily.common.constant.Constants;
-import com.speily.common.constant.GenConstants;
+import com.speily.entity.base.GenConstants;
 import com.speily.common.exception.BusinessException;
 import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.text.Convert;

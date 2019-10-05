@@ -11,4 +11,12 @@
 
     <artifactId>simple-common</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.speily</groupId>
+            <artifactId>simple-entity</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
 </project>
