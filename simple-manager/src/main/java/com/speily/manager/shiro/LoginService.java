@@ -4,7 +4,7 @@ import com.speily.common.constant.Constants;
 import com.speily.common.constant.ShiroConstants;
 import com.speily.entity.base.UserConstants;
 import com.speily.common.exception.user.*;
-import com.speily.common.manager.AsyncManager;
+import com.speily.framework.manager.AsyncManager;
 import com.speily.common.utils.DateUtils;
 import com.speily.common.utils.ServletUtils;
 import com.speily.entity.User;

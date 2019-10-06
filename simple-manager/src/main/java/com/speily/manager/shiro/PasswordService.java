@@ -4,7 +4,7 @@ import com.speily.common.constant.Constants;
 import com.speily.common.constant.ShiroConstants;
 import com.speily.common.exception.user.UserPasswordNotMatchException;
 import com.speily.common.exception.user.UserPasswordRetryLimitExceedException;
-import com.speily.common.manager.AsyncManager;
+import com.speily.framework.manager.AsyncManager;
 import com.speily.common.utils.PwdUtils;
 import com.speily.entity.User;
 import com.speily.common.utils.MessageUtils;

@@ -13,7 +13,7 @@ project:
   # 获取ip地址开关
   addressEnabled: true
   # 是否是shiro登陆者
-  shiroLogin: manager
+  shiroLogin: false
 
 # 开发环境配置
 server:

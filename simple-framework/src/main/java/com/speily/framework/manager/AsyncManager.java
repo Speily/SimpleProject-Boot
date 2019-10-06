@@ -1,4 +1,4 @@
-package com.speily.common.manager;
+package com.speily.framework.manager;
 
 import com.speily.common.utils.SpringUtils;
 import com.speily.common.utils.Threads;

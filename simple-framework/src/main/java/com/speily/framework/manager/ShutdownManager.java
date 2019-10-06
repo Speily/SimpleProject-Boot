@@ -1,6 +1,6 @@
-package com.speily.common.manager;
+package com.speily.framework.manager;
 
-import com.speily.common.SpringSessionValidationScheduler;
+import com.speily.framework.SpringSessionValidationScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

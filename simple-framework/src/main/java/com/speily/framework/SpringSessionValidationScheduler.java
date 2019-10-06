@@ -1,4 +1,4 @@
-package com.speily.common;
+package com.speily.framework;
 
 import com.speily.common.utils.Threads;
 import org.apache.shiro.session.mgt.DefaultSessionManager;

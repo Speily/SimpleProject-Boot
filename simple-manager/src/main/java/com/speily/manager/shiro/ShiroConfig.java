@@ -8,7 +8,7 @@ import com.speily.manager.shiro.filter.kickout.KickoutSessionFilter;
 import com.speily.manager.shiro.filter.online.OnlineSessionFilter;
 import com.speily.manager.shiro.filter.sync.SyncOnlineSessionFilter;
 import com.speily.manager.shiro.session.OnlineWebSessionManager;
-import com.speily.common.SpringSessionValidationScheduler;
+import com.speily.framework.SpringSessionValidationScheduler;
 import com.speily.common.utils.SpringUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.shiro.cache.ehcache.EhCacheManager;

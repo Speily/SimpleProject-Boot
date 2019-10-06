@@ -2,7 +2,7 @@ package com.speily.manager.shiro.filter;
 
 import com.speily.common.constant.Constants;
 import com.speily.common.constant.ShiroConstants;
-import com.speily.common.manager.AsyncManager;
+import com.speily.framework.manager.AsyncManager;
 import com.speily.common.utils.StringUtils;
 import com.speily.entity.User;
 import com.speily.common.utils.MessageUtils;

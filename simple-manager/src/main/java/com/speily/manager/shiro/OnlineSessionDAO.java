@@ -1,6 +1,6 @@
 package com.speily.manager.shiro;
 
-import com.speily.common.manager.AsyncManager;
+import com.speily.framework.manager.AsyncManager;
 import com.speily.entity.UserOnline;
 import com.speily.entity.OnlineSession;
 import com.speily.manager.ext.AsyncFactory;
