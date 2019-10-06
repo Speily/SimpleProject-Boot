@@ -38,16 +38,16 @@
             </div>
 
             <div class="btn-group-sm" id="toolbar" role="group">
-                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="cms:article:add">
+                <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="speily:article:add">
                     <i class="fa fa-plus"></i> 添加
                 </a>
-                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="cms:article:edit">
+                <a class="btn btn-primary single disabled" onclick="$.operate.editTab()" shiro:hasPermission="speily:article:edit">
                     <i class="fa fa-edit"></i> 修改
                 </a>
-                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="cms:article:remove">
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="speily:article:remove">
                     <i class="fa fa-remove"></i> 删除
                 </a>
-                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="cms:article:export">
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="speily:article:export">
                     <i class="fa fa-download"></i> 导出
                  </a>
             </div>
@@ -58,8 +58,8 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var editFlag = [[${@permission.hasPermi('cms:article:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('cms:article:remove')}]];
+        var editFlag = [[${@permission.hasPermi('speily:article:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('speily:article:remove')}]];
         var prefix = ctx + "cms/article";
 
         $(function() {

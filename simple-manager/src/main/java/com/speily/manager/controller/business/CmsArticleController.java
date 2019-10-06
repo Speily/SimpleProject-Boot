@@ -1,12 +1,12 @@
 package com.speily.manager.controller.business;
 
-import com.speily.entity.CmsArticle;
 import com.speily.common.aspectj.annotation.Log;
 import com.speily.common.aspectj.enums.BusinessType;
-import com.speily.common.utils.ExcelUtil;
-import com.speily.manager.ext.page.TableDataInfo;
 import com.speily.common.result.AjaxResult;
+import com.speily.common.utils.ExcelUtil;
+import com.speily.entity.CmsArticle;
 import com.speily.manager.controller.BaseController;
+import com.speily.manager.ext.page.TableDataInfo;
 import com.speily.service.ICmsArticleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.List;
  * 文章Controller
  *
  * @author spl
- * @date 2019-10-03
+ * @date 2019-10-06
  */
 @Controller
 @RequestMapping("/cms/article")

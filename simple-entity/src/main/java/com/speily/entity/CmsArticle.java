@@ -21,8 +21,8 @@ public class CmsArticle extends BaseEntity {
     @Excel(name = "文章标题")
     private String articleTittle;
 
-    /** null */
-    @Excel(name = "null")
+    /** 文章内容 */
+    @Excel(name = "文章内容")
     private String articleContext;
 
     /** 显示排序 */

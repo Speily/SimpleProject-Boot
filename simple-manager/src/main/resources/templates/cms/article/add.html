@@ -1,59 +1,96 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('新增文章')" />
+    <th:block th:include="include :: header('新增文章')"/>
+    <link th:href="@{/plugins/editormd/css/editormd.css}" rel="stylesheet"/>
 </head>
 <body class="white-bg">
-    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-        <form class="form-horizontal m" id="form-article-add">
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">文章标题：</label>
-                <div class="col-sm-8">
-                    <input name="articleTittle" class="form-control" type="text">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-article-add">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">文章标题：</label>
+            <div class="col-sm-11">
+                <input name="articleTittle" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">文章主体内容：</label>
+            <div class="col-sm-11">
+                <div id="editormd-scope" name="articleContext">
+                    <textarea></textarea>
                 </div>
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">文章主体内容：</label>
-                <div class="col-sm-8">
-                    <input name="articleContext" class="form-control" type="text">
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">显示排序：</label>
+            <div class="col-sm-11">
+                <input name="orderNum" class="form-control" type="text">
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">显示排序：</label>
-                <div class="col-sm-8">
-                    <input name="orderNum" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">状态：</label>
+            <div class="col-sm-11">
+                <div class="radio-box">
+                    <input type="radio" name="status" value="">
+                    <label th:for="status" th:text="未知"></label>
                 </div>
+                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">状态：</label>
-                <div class="col-sm-8">
-                    <div class="radio-box">
-                        <input type="radio" name="status" value="">
-                        <label th:for="status" th:text="未知"></label>
-                    </div>
-                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 代码生成请选择字典属性</span>
-                </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">删除标志：</label>
+            <div class="col-sm-11">
+                <input name="delFlag" class="form-control" type="text">
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">删除标志：</label>
-                <div class="col-sm-8">
-                    <input name="delFlag" class="form-control" type="text">
-                </div>
-            </div>
-        </form>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-sm-offset-5 col-sm-10">
+        <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+        <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
     </div>
-    <th:block th:include="include :: footer" />
-    <script type="text/javascript">
-        var prefix = ctx + "cms/article"
-        $("#form-article-add").validate({
-            focusCleanup: true
-        });
+</div>
+<th:block th:include="include :: footer"/>
+<script th:src="@{/plugins/editormd/editormd.min.js}"></script>
+<script type="text/javascript">
+    var prefix = ctx + "cms/article";
 
-        function submitHandler() {
-            if ($.validate.form()) {
-                $.operate.save(prefix + "/add", $('#form-article-add').serialize());
-            }
+    var testEditor = editormd("editormd-scope", {
+        height: 620,
+        // autoHeight : true,
+        placeholder:'Markdown编辑，左边编写，右边预览',  //默认显示的文字，这里就不解释了
+        path: "/plugins/editormd/lib/",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+        saveHTMLToTextarea: true,
+        taskList: true,
+        syncScrolling : true,
+        imageUpload: true,//图片上传功能
+        tocm: true,         // Using [TOCM]
+        tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+        flowChart: true,             // 开启流程图支持，默认关闭
+        sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+        toolbarIcons : function() {  //自定义工具栏，后面有详细介绍
+            return editormd.toolbarModes['full']; // full, simple, mini
+        },
+    });
+
+    $("#form-article-add").validate({
+        focusCleanup: true
+    });
+
+    function submitHandler() {
+
+        var blogcontent = encodeURIComponent(testEditor.getMarkdown());
+
+        var data = $("#form-article-add").serializeArray();
+        console.log(data)
+        console.log(blogcontent)
+
+        return false;
+        if ($.validate.form()) {
+            $.operate.saveTab(prefix + "/add", $('#form-article-add').serialize());
         }
-    </script>
+    }
+</script>
 </body>
 </html>
