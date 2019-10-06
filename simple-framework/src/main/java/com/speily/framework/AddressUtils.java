@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.speily.common.utils.IpUtils;
 import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.http.HttpUtils;
-import com.speily.framework.config.ProjectConfig;
+import com.speily.common.ProjectConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

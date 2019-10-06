@@ -3,7 +3,7 @@ package com.speily.manager.controller.demo;
 import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.text.Convert;
 import com.speily.common.exception.BusinessException;
-import com.speily.framework.poi.ExcelUtil;
+import com.speily.common.utils.ExcelUtil;
 import com.speily.manager.web.page.PageDomain;
 import com.speily.manager.web.page.TableDataInfo;
 import com.speily.manager.web.page.TableSupport;

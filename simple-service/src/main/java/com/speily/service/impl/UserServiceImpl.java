@@ -5,7 +5,7 @@ import com.speily.common.exception.BusinessException;
 import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.text.Convert;
 import com.speily.entity.*;
-import com.speily.common.aspectj.lang.annotation.DataScope;
+import com.speily.common.aspectj.annotation.DataScope;
 import com.speily.service.PasswordService;
 import com.speily.service.ShiroUtils;
 import com.speily.mapper.*;

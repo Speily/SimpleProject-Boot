@@ -1,7 +1,7 @@
 package com.speily.framework;
 
 import com.speily.common.utils.StringUtils;
-import com.speily.common.aspectj.lang.annotation.DataSource;
+import com.speily.common.aspectj.annotation.DataSource;
 import com.speily.framework.datasource.DynamicDataSourceContextHolder;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -26,8 +26,8 @@ import java.lang.reflect.Method;
 public class DataSourceAspect {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("@annotation(com.speily.common.aspectj.lang.annotation.DataSource)"
-            + "|| @within(com.speily.common.aspectj.lang.annotation.DataSource)")
+    @Pointcut("@annotation(com.speily.common.aspectj.annotation.DataSource)"
+            + "|| @within(com.speily.common.aspectj.annotation.DataSource)")
     public void dsPointCut() {
 
     }

@@ -2,7 +2,7 @@ package com.speily.service;
 
 import com.speily.common.utils.StringUtils;
 import com.speily.entity.User;
-import com.speily.framework.BeanUtils;
+import com.speily.common.utils.BeanUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.mgt.RealmSecurityManager;
 import org.apache.shiro.session.Session;

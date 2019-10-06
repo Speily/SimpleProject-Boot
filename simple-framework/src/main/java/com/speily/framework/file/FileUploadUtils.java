@@ -6,7 +6,7 @@ import com.speily.common.exception.file.InvalidExtensionException;
 import com.speily.common.utils.DateUtils;
 import com.speily.common.utils.Md5Utils;
 import com.speily.common.utils.StringUtils;
-import com.speily.framework.config.ProjectConfig;
+import com.speily.common.ProjectConfig;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 

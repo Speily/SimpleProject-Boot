@@ -3,7 +3,7 @@ package com.speily.manager.controller;
 import com.speily.common.utils.StringUtils;
 import com.speily.framework.file.FileUploadUtils;
 import com.speily.framework.file.FileUtils;
-import com.speily.framework.config.ProjectConfig;
+import com.speily.common.ProjectConfig;
 import com.speily.framework.config.ServerConfig;
 import com.speily.common.result.AjaxResult;
 import org.slf4j.Logger;

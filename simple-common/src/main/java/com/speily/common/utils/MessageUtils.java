@@ -1,6 +1,5 @@
 package com.speily.common.utils;
 
-import com.speily.common.spring.SpringUtils;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 

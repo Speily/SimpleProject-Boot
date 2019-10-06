@@ -1,9 +1,9 @@
 package com.speily.manager.controller.management;
 
 import com.speily.entity.Logininfor;
-import com.speily.common.aspectj.lang.annotation.Log;
+import com.speily.common.aspectj.annotation.Log;
 import com.speily.common.aspectj.lang.enums.BusinessType;
-import com.speily.framework.poi.ExcelUtil;
+import com.speily.common.utils.ExcelUtil;
 import com.speily.manager.web.page.TableDataInfo;
 import com.speily.common.result.AjaxResult;
 import com.speily.manager.controller.BaseController;

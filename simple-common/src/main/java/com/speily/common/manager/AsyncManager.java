@@ -1,6 +1,6 @@
 package com.speily.common.manager;
 
-import com.speily.common.spring.SpringUtils;
+import com.speily.common.utils.SpringUtils;
 import com.speily.common.utils.Threads;
 
 import java.util.TimerTask;

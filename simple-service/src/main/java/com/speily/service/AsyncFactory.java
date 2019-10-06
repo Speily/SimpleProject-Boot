@@ -1,7 +1,7 @@
 package com.speily.service;
 
 import com.speily.common.constant.Constants;
-import com.speily.common.spring.SpringUtils;
+import com.speily.common.utils.SpringUtils;
 import com.speily.common.utils.ServletUtils;
 import com.speily.entity.Logininfor;
 import com.speily.entity.OnlineSession;
@@ -9,9 +9,6 @@ import com.speily.entity.OperLog;
 import com.speily.entity.UserOnline;
 import com.speily.framework.AddressUtils;
 import com.speily.framework.LogUtils;
-import com.speily.service.ShiroUtils;
-import com.speily.service.IOperLogService;
-import com.speily.service.IUserOnlineService;
 import com.speily.service.impl.LogininforServiceImpl;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.slf4j.Logger;

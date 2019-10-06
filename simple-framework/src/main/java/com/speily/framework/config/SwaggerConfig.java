@@ -1,5 +1,6 @@
 package com.speily.framework.config;
 
+import com.speily.common.ProjectConfig;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

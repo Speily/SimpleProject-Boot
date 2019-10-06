@@ -1,7 +1,7 @@
 package com.speily.manager.controller.management;
 
 import com.speily.entity.UserOnline;
-import com.speily.common.aspectj.lang.annotation.Log;
+import com.speily.common.aspectj.annotation.Log;
 import com.speily.common.aspectj.lang.enums.BusinessType;
 import com.speily.service.ShiroUtils;
 import com.speily.service.OnlineSessionDAO;

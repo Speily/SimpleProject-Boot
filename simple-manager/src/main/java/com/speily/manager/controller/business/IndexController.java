@@ -2,7 +2,7 @@ package com.speily.manager.controller.business;
 
 import com.speily.entity.Menu;
 import com.speily.entity.User;
-import com.speily.framework.config.ProjectConfig;
+import com.speily.common.ProjectConfig;
 import com.speily.manager.controller.BaseController;
 import com.speily.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
