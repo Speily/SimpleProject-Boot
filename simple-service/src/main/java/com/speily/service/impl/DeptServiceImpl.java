@@ -1,5 +1,6 @@
 package com.speily.service.impl;
 
+import com.speily.common.utils.CurrentUserUtils;
 import com.speily.entity.base.UserConstants;
 import com.speily.common.exception.BusinessException;
 import com.speily.common.result.Ztree;
@@ -9,7 +10,6 @@ import com.speily.entity.Role;
 import com.speily.common.aspectj.annotation.DataScope;
 import com.speily.mapper.DeptMapper;
 import com.speily.service.IDeptService;
-import com.speily.service.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -158,7 +158,7 @@ public class DeptServiceImpl implements IDeptService {
         if (!UserConstants.DEPT_NORMAL.equals(info.getStatus())) {
             throw new BusinessException("部门停用，不允许新增");
         }
-        dept.setCreateBy(ShiroUtils.getLoginName());
+        dept.setCreateBy(CurrentUserUtils.getSysUser().getLoginName());
         dept.setAncestors(info.getAncestors() + "," + dept.getParentId());
         return deptMapper.insertDept(dept);
     }
@@ -180,7 +180,7 @@ public class DeptServiceImpl implements IDeptService {
             dept.setAncestors(newAncestors);
             updateDeptChildren(dept.getDeptId(), newAncestors, oldAncestors);
         }
-        dept.setUpdateBy(ShiroUtils.getLoginName());
+        dept.setUpdateBy(CurrentUserUtils.getSysUser().getLoginName());
         int result = deptMapper.updateDept(dept);
         if (UserConstants.DEPT_NORMAL.equals(dept.getStatus())) {
             // 如果该部门是启用状态，则启用该部门的所有上级部门

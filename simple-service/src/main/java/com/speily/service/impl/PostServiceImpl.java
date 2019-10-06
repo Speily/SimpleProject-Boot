@@ -1,11 +1,11 @@
 package com.speily.service.impl;
 
+import com.speily.common.utils.CurrentUserUtils;
 import com.speily.entity.base.UserConstants;
 import com.speily.common.exception.BusinessException;
 import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.text.Convert;
 import com.speily.entity.Post;
-import com.speily.service.ShiroUtils;
 import com.speily.mapper.PostMapper;
 import com.speily.mapper.UserPostMapper;
 import com.speily.service.IPostService;
@@ -106,7 +106,7 @@ public class PostServiceImpl implements IPostService {
      */
     @Override
     public int insertPost(Post post) {
-        post.setCreateBy(ShiroUtils.getLoginName());
+        post.setCreateBy(CurrentUserUtils.getSysUser().getLoginName());
         return postMapper.insertPost(post);
     }
 
@@ -118,7 +118,7 @@ public class PostServiceImpl implements IPostService {
      */
     @Override
     public int updatePost(Post post) {
-        post.setUpdateBy(ShiroUtils.getLoginName());
+        post.setUpdateBy(CurrentUserUtils.getSysUser().getLoginName());
         return postMapper.updatePost(post);
     }
 

@@ -1,85 +1,87 @@
-# ÏîÄ¿Ïà¹ØÅäÖÃ
+# é¡¹ç›®ç›¸å…³é…ç½®
 project:
-  # Ãû³Æ
+  # åç§°
   name: Speily
-  # °æ±¾
+  # ç‰ˆæœ¬
   version: 1.0.0
-  # °æÈ¨Äê·İ
+  # ç‰ˆæƒå¹´ä»½
   copyrightYear: 2019
-  # ÊµÀıÑİÊ¾¿ª¹Ø
+  # å®ä¾‹æ¼”ç¤ºå¼€å…³
   demoEnabled: true
-  # ÎÄ¼şÂ·¾¶
+  # æ–‡ä»¶è·¯å¾„
   profile: D:/project/uploadPath
-  # »ñÈ¡ipµØÖ·¿ª¹Ø
+  # è·å–ipåœ°å€å¼€å…³
   addressEnabled: true
+  # æ˜¯å¦æ˜¯shiroç™»é™†è€…
+  shiroLogin: manager
 
-# ¿ª·¢»·¾³ÅäÖÃ
+# å¼€å‘ç¯å¢ƒé…ç½®
 server:
-  # ·şÎñÆ÷µÄHTTP¶Ë¿Ú£¬Ä¬ÈÏÎª80
+  # æœåŠ¡å™¨çš„HTTPç«¯å£ï¼Œé»˜è®¤ä¸º80
   port: 8081
   servlet:
-    # Ó¦ÓÃµÄ·ÃÎÊÂ·¾¶
+    # åº”ç”¨çš„è®¿é—®è·¯å¾„
     context-path: /mobile
   tomcat:
-    # tomcatµÄURI±àÂë
+    # tomcatçš„URIç¼–ç 
     uri-encoding: UTF-8
-    # tomcat×î´óÏß³ÌÊı£¬Ä¬ÈÏÎª200
+    # tomcatæœ€å¤§çº¿ç¨‹æ•°ï¼Œé»˜è®¤ä¸º200
     max-threads: 800
-    # TomcatÆô¶¯³õÊ¼»¯µÄÏß³ÌÊı£¬Ä¬ÈÏÖµ25
+    # Tomcatå¯åŠ¨åˆå§‹åŒ–çš„çº¿ç¨‹æ•°ï¼Œé»˜è®¤å€¼25
     min-spare-threads: 30
 
-# ÈÕÖ¾ÅäÖÃ
+# æ—¥å¿—é…ç½®
 logging:
   level:
     com.speily: debug
     org.springframework: warn
 
-# ÓÃ»§ÅäÖÃ
+# ç”¨æˆ·é…ç½®
 user:
   password:
-    # ÃÜÂë´íÎó{maxRetryCount}´ÎËø¶¨10·ÖÖÓ
+    # å¯†ç é”™è¯¯{maxRetryCount}æ¬¡é”å®š10åˆ†é’Ÿ
     maxRetryCount: 5
 
-# SpringÅäÖÃ
+# Springé…ç½®
 spring:
-  # Ä£°åÒıÇæ
+  # æ¨¡æ¿å¼•æ“
   thymeleaf:
     mode: HTML
     encoding: utf-8
-    # ½ûÓÃ»º´æ
+    # ç¦ç”¨ç¼“å­˜
     cache: false
-  # ×ÊÔ´ĞÅÏ¢
+  # èµ„æºä¿¡æ¯
   messages:
-    # ¹ú¼Ê»¯×ÊÔ´ÎÄ¼şÂ·¾¶
+    # å›½é™…åŒ–èµ„æºæ–‡ä»¶è·¯å¾„
     basename: static/i18n/messages
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
   profiles:
     active: druid
-  # ÎÄ¼şÉÏ´«
+  # æ–‡ä»¶ä¸Šä¼ 
   servlet:
     multipart:
-      # µ¥¸öÎÄ¼ş´óĞ¡
+      # å•ä¸ªæ–‡ä»¶å¤§å°
       max-file-size:  10MB
-      # ÉèÖÃ×ÜÉÏ´«µÄÎÄ¼ş´óĞ¡
+      # è®¾ç½®æ€»ä¸Šä¼ çš„æ–‡ä»¶å¤§å°
       max-request-size:  20MB
-  # ·şÎñÄ£¿é
+  # æœåŠ¡æ¨¡å—
   devtools:
     restart:
-      # ÈÈ²¿Êğ¿ª¹Ø
+      # çƒ­éƒ¨ç½²å¼€å…³
       enabled: true
 
 # MyBatis
 mybatis:
-  # ËÑË÷Ö¸¶¨ÊµÌå°ü±ğÃû
+  # æœç´¢æŒ‡å®šå®ä½“åŒ…åˆ«å
   typeAliasesPackage: com.speily.mobile;com.speily.entity
-  # ÅäÖÃmapperµÄÉ¨Ãè£¬ÕÒµ½ËùÓĞµÄmapper.xmlÓ³ÉäÎÄ¼ş
+  # é…ç½®mapperçš„æ‰«æï¼Œæ‰¾åˆ°æ‰€æœ‰çš„mapper.xmlæ˜ å°„æ–‡ä»¶
   mapperLocations: classpath:mybatis/**/*Mapper.xml
-  # ¼ÓÔØÈ«¾ÖµÄÅäÖÃÎÄ¼ş
+  # åŠ è½½å…¨å±€çš„é…ç½®æ–‡ä»¶
   configLocation: classpath:mybatis/mybatis-config.xml
 
-# PageHelper·ÖÒ³²å¼ş
+# PageHelperåˆ†é¡µæ’ä»¶
 pagehelper:
   helperDialect: mysql
   reasonable: true

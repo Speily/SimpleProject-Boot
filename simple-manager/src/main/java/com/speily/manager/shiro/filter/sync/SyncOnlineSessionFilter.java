@@ -1,7 +1,7 @@
 package com.speily.manager.shiro.filter.sync;
 
 import com.speily.common.constant.ShiroConstants;
-import com.speily.service.OnlineSessionDAO;
+import com.speily.manager.shiro.OnlineSessionDAO;
 import com.speily.entity.OnlineSession;
 import org.apache.shiro.web.filter.PathMatchingFilter;
 import org.springframework.beans.factory.annotation.Autowired;

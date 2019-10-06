@@ -41,6 +41,19 @@ public class ProjectConfig {
      */
     private static boolean addressEnabled;
 
+    /**
+     * 是否shiro登录方式
+     */
+    private static boolean shiroLogin;
+
+    public static boolean isShiroLogin() {
+        return shiroLogin;
+    }
+
+    public void setShiroLogin(boolean shiroLogin) {
+        ProjectConfig.shiroLogin = shiroLogin;
+    }
+
     public String getName() {
         return name;
     }

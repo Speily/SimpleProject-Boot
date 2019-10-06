@@ -3,7 +3,7 @@ package com.speily.manager.shiro.filter.kickout;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.speily.common.constant.ShiroConstants;
 import com.speily.entity.User;
-import com.speily.service.ShiroUtils;
+import com.speily.manager.shiro.ShiroUtils;
 import com.speily.common.utils.ServletUtils;
 import com.speily.common.result.AjaxResult;
 import org.apache.shiro.cache.Cache;

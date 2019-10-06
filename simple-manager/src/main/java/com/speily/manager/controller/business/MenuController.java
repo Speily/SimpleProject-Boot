@@ -8,6 +8,7 @@ import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.result.AjaxResult;
 import com.speily.common.result.Ztree;
 import com.speily.manager.controller.BaseController;
+import com.speily.manager.shiro.ShiroUtils;
 import com.speily.service.IMenuService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,7 @@ public class MenuController extends BaseController {
         if (menuService.selectCountRoleMenuByMenuId(menuId) > 0) {
             return AjaxResult.warn("菜单已分配,不允许删除");
         }
+        ShiroUtils.clearCachedAuthorizationInfo();
         return toAjax(menuService.deleteMenuById(menuId));
     }
 
@@ -90,6 +92,7 @@ public class MenuController extends BaseController {
         if (UserConstants.MENU_NAME_NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu))) {
             return error("新增菜单'" + menu.getMenuName() + "'失败，菜单名称已存在");
         }
+        ShiroUtils.clearCachedAuthorizationInfo();
         return toAjax(menuService.insertMenu(menu));
     }
 
@@ -113,6 +116,7 @@ public class MenuController extends BaseController {
         if (UserConstants.MENU_NAME_NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu))) {
             return error("修改菜单'" + menu.getMenuName() + "'失败，菜单名称已存在");
         }
+        ShiroUtils.clearCachedAuthorizationInfo();
         return toAjax(menuService.updateMenu(menu));
     }
 

@@ -1,12 +1,12 @@
 package com.speily.service.impl;
 
+import com.speily.common.utils.CurrentUserUtils;
 import com.speily.entity.base.UserConstants;
 import com.speily.common.utils.StringUtils;
 import com.speily.entity.Menu;
 import com.speily.entity.Role;
 import com.speily.entity.User;
-import com.speily.framework.TreeUtils;
-import com.speily.service.ShiroUtils;
+import com.speily.common.web.TreeUtils;
 import com.speily.common.result.Ztree;
 import com.speily.mapper.MenuMapper;
 import com.speily.mapper.RoleMenuMapper;
@@ -58,7 +58,7 @@ public class MenuServiceImpl implements IMenuService {
     @Override
     public List<Menu> selectMenuList(Menu menu) {
         List<Menu> menuList = null;
-        User user = ShiroUtils.getSysUser();
+        User user = CurrentUserUtils.getSysUser();
         if (user.isAdmin()) {
             menuList = menuMapper.selectMenuList(menu);
         } else {
@@ -76,7 +76,7 @@ public class MenuServiceImpl implements IMenuService {
     @Override
     public List<Menu> selectMenuAll() {
         List<Menu> menuList = null;
-        User user = ShiroUtils.getSysUser();
+        User user = CurrentUserUtils.getSysUser();
         if (user.isAdmin()) {
             menuList = menuMapper.selectMenuAll();
         } else {
@@ -204,7 +204,6 @@ public class MenuServiceImpl implements IMenuService {
      */
     @Override
     public int deleteMenuById(Long menuId) {
-        ShiroUtils.clearCachedAuthorizationInfo();
         return menuMapper.deleteMenuById(menuId);
     }
 
@@ -249,8 +248,7 @@ public class MenuServiceImpl implements IMenuService {
      */
     @Override
     public int insertMenu(Menu menu) {
-        menu.setCreateBy(ShiroUtils.getLoginName());
-        ShiroUtils.clearCachedAuthorizationInfo();
+        menu.setCreateBy(CurrentUserUtils.getSysUser().getLoginName());
         return menuMapper.insertMenu(menu);
     }
 
@@ -262,8 +260,7 @@ public class MenuServiceImpl implements IMenuService {
      */
     @Override
     public int updateMenu(Menu menu) {
-        menu.setUpdateBy(ShiroUtils.getLoginName());
-        ShiroUtils.clearCachedAuthorizationInfo();
+        menu.setUpdateBy(CurrentUserUtils.getSysUser().getLoginName());
         return menuMapper.updateMenu(menu);
     }
 

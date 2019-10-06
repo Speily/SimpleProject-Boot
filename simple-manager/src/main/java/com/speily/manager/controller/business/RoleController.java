@@ -7,9 +7,10 @@ import com.speily.entity.UserRole;
 import com.speily.common.aspectj.annotation.Log;
 import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.utils.ExcelUtil;
-import com.speily.manager.web.page.TableDataInfo;
+import com.speily.manager.ext.page.TableDataInfo;
 import com.speily.common.result.AjaxResult;
 import com.speily.manager.controller.BaseController;
+import com.speily.manager.shiro.ShiroUtils;
 import com.speily.service.IRoleService;
 import com.speily.service.IUserService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -83,6 +84,7 @@ public class RoleController extends BaseController {
         } else if (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role))) {
             return error("新增角色'" + role.getRoleName() + "'失败，角色权限已存在");
         }
+        ShiroUtils.clearCachedAuthorizationInfo();
         return toAjax(roleService.insertRole(role));
 
     }
@@ -109,6 +111,7 @@ public class RoleController extends BaseController {
         } else if (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role))) {
             return error("修改角色'" + role.getRoleName() + "'失败，角色权限已存在");
         }
+        ShiroUtils.clearCachedAuthorizationInfo();
         return toAjax(roleService.updateRole(role));
     }
 

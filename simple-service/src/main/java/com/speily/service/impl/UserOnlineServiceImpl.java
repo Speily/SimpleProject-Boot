@@ -5,8 +5,6 @@ import com.speily.common.utils.StringUtils;
 import com.speily.entity.UserOnline;
 import com.speily.mapper.UserOnlineMapper;
 import com.speily.service.IUserOnlineService;
-import com.speily.service.OnlineSessionDAO;
-import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +21,6 @@ public class UserOnlineServiceImpl implements IUserOnlineService {
     @Autowired
     private UserOnlineMapper userOnlineDao;
 
-    @Autowired
-    private OnlineSessionDAO onlineSessionDAO;
 
     /**
      * 通过会话序号查询信息
@@ -80,7 +76,7 @@ public class UserOnlineServiceImpl implements IUserOnlineService {
     /**
      * 查询会话集合
      *
-     * @param pageUtilEntity 分页参数
+     * @param userOnline 分页参数
      */
     @Override
     public List<UserOnline> selectUserOnlineList(UserOnline userOnline) {
@@ -94,18 +90,13 @@ public class UserOnlineServiceImpl implements IUserOnlineService {
      */
     @Override
     public void forceLogout(String sessionId) {
-        Session session = onlineSessionDAO.readSession(sessionId);
-        if (session == null) {
-            return;
-        }
-        session.setTimeout(1000);
-        userOnlineDao.deleteOnlineById(sessionId);
+
     }
 
     /**
      * 查询会话集合
      *
-     * @param online 会话信息
+     * @param expiredDate 会话信息
      */
     @Override
     public List<UserOnline> selectOnlineByExpired(Date expiredDate) {

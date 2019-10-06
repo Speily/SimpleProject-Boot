@@ -1,12 +1,12 @@
 package com.speily.manager.controller.business;
 
+import com.speily.common.utils.PwdUtils;
 import com.speily.common.utils.StringUtils;
 import com.speily.framework.file.FileUploadUtils;
 import com.speily.entity.User;
 import com.speily.common.aspectj.annotation.Log;
 import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.ProjectConfig;
-import com.speily.service.PasswordService;
 import com.speily.common.result.AjaxResult;
 import com.speily.manager.controller.BaseController;
 import com.speily.service.IUserService;
@@ -33,8 +33,6 @@ public class ProfileController extends BaseController {
     @Autowired
     private IUserService userService;
 
-    @Autowired
-    private PasswordService passwordService;
 
     /**
      * 个人信息
@@ -52,7 +50,7 @@ public class ProfileController extends BaseController {
     @ResponseBody
     public boolean checkPassword(String password) {
         User user = getSysUser();
-        if (passwordService.matches(user, password)) {
+        if (PwdUtils.matches(user, password)) {
             return true;
         }
         return false;
@@ -70,7 +68,7 @@ public class ProfileController extends BaseController {
     @ResponseBody
     public AjaxResult resetPwd(String oldPassword, String newPassword) {
         User user = getSysUser();
-        if (StringUtils.isNotEmpty(newPassword) && passwordService.matches(user, oldPassword)) {
+        if (StringUtils.isNotEmpty(newPassword) && PwdUtils.matches(user, oldPassword)) {
             user.setPassword(newPassword);
             if (userService.resetUserPwd(user) > 0) {
                 setSysUser(userService.selectUserById(user.getUserId()));

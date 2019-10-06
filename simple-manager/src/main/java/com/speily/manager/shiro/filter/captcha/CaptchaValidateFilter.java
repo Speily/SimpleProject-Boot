@@ -3,7 +3,7 @@ package com.speily.manager.shiro.filter.captcha;
 import com.google.code.kaptcha.Constants;
 import com.speily.common.constant.ShiroConstants;
 import com.speily.common.utils.StringUtils;
-import com.speily.service.ShiroUtils;
+import com.speily.manager.shiro.ShiroUtils;
 import org.apache.shiro.web.filter.AccessControlFilter;
 
 import javax.servlet.ServletRequest;

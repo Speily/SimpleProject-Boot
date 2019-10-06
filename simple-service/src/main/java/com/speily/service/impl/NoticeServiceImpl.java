@@ -1,10 +1,10 @@
 package com.speily.service.impl;
 
+import com.speily.common.utils.CurrentUserUtils;
 import com.speily.common.utils.text.Convert;
 import com.speily.entity.Notice;
 import com.speily.mapper.NoticeMapper;
 import com.speily.service.INoticeService;
-import com.speily.service.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +51,7 @@ public class NoticeServiceImpl implements INoticeService {
      */
     @Override
     public int insertNotice(Notice notice) {
-        notice.setCreateBy(ShiroUtils.getLoginName());
+        notice.setCreateBy(CurrentUserUtils.getSysUser().getLoginName());
         return noticeMapper.insertNotice(notice);
     }
 
@@ -63,7 +63,7 @@ public class NoticeServiceImpl implements INoticeService {
      */
     @Override
     public int updateNotice(Notice notice) {
-        notice.setUpdateBy(ShiroUtils.getLoginName());
+        notice.setUpdateBy(CurrentUserUtils.getSysUser().getLoginName());
         return noticeMapper.updateNotice(notice);
     }
 

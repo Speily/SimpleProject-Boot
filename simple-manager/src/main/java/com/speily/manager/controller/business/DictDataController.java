@@ -4,7 +4,7 @@ import com.speily.entity.DictData;
 import com.speily.common.aspectj.annotation.Log;
 import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.utils.ExcelUtil;
-import com.speily.manager.web.page.TableDataInfo;
+import com.speily.manager.ext.page.TableDataInfo;
 import com.speily.common.result.AjaxResult;
 import com.speily.manager.controller.BaseController;
 import com.speily.service.IDictDataService;

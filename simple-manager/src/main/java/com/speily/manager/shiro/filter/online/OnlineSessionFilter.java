@@ -2,8 +2,8 @@ package com.speily.manager.shiro.filter.online;
 
 import com.speily.common.constant.ShiroConstants;
 import com.speily.entity.User;
-import com.speily.service.ShiroUtils;
-import com.speily.service.OnlineSessionDAO;
+import com.speily.manager.shiro.ShiroUtils;
+import com.speily.manager.shiro.OnlineSessionDAO;
 import com.speily.entity.OnlineSession;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;

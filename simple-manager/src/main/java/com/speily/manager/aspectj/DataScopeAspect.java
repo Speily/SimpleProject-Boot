@@ -5,7 +5,7 @@ import com.speily.entity.base.BaseEntity;
 import com.speily.entity.Role;
 import com.speily.entity.User;
 import com.speily.common.aspectj.annotation.DataScope;
-import com.speily.service.ShiroUtils;
+import com.speily.manager.shiro.ShiroUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Aspect;

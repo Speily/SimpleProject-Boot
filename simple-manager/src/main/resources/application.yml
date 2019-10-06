@@ -12,6 +12,8 @@ project:
   profile: D:/project/uploadPath
   # 获取ip地址开关
   addressEnabled: true
+  # 是否是shiro登陆者
+  shiroLogin: true
 
 # 开发环境配置
 server:

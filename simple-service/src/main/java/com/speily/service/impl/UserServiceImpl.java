@@ -1,13 +1,13 @@
 package com.speily.service.impl;
 
+import com.speily.common.utils.CurrentUserUtils;
+import com.speily.common.utils.PwdUtils;
 import com.speily.entity.base.UserConstants;
 import com.speily.common.exception.BusinessException;
 import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.text.Convert;
 import com.speily.entity.*;
 import com.speily.common.aspectj.annotation.DataScope;
-import com.speily.service.PasswordService;
-import com.speily.service.ShiroUtils;
 import com.speily.mapper.*;
 import com.speily.service.IConfigService;
 import com.speily.service.IUserService;
@@ -46,9 +46,6 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IConfigService configService;
-
-    @Autowired
-    private PasswordService passwordService;
 
     /**
      * 根据条件分页查询用户列表
@@ -171,8 +168,8 @@ public class UserServiceImpl implements IUserService {
     @Transactional
     public int insertUser(User user) {
         user.randomSalt();
-        user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
-        user.setCreateBy(ShiroUtils.getLoginName());
+        user.setPassword(PwdUtils.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
+        user.setCreateBy(CurrentUserUtils.getSysUser().getLoginName());
         // 新增用户信息
         int rows = userMapper.insertUser(user);
         // 新增用户岗位关联
@@ -192,7 +189,7 @@ public class UserServiceImpl implements IUserService {
     @Transactional
     public int updateUser(User user) {
         Long userId = user.getUserId();
-        user.setUpdateBy(ShiroUtils.getLoginName());
+        user.setUpdateBy(CurrentUserUtils.getSysUser().getLoginName());
         // 删除用户与角色关联
         userRoleMapper.deleteUserRoleByUserId(userId);
         // 新增用户与角色管理
@@ -224,7 +221,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public int resetUserPwd(User user) {
         user.randomSalt();
-        user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
+        user.setPassword(PwdUtils.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
         return updateUserInfo(user);
     }
 
@@ -373,7 +370,7 @@ public class UserServiceImpl implements IUserService {
         int failureNum = 0;
         StringBuilder successMsg = new StringBuilder();
         StringBuilder failureMsg = new StringBuilder();
-        String operName = ShiroUtils.getLoginName();
+        String operName = CurrentUserUtils.getSysUser().getLoginName();
         String password = configService.selectConfigByKey("sys.user.initPassword");
         for (User user : userList) {
             try {

@@ -3,13 +3,13 @@ package com.speily.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.speily.common.constant.Constants;
+import com.speily.common.utils.CurrentUserUtils;
 import com.speily.entity.base.GenConstants;
 import com.speily.common.exception.BusinessException;
 import com.speily.common.utils.StringUtils;
 import com.speily.common.utils.text.Convert;
 import com.speily.entity.GenTable;
 import com.speily.entity.GenTableColumn;
-import com.speily.service.ShiroUtils;
 import com.speily.common.generate.GenUtils;
 import com.speily.common.generate.VelocityInitializer;
 import com.speily.common.generate.VelocityUtils;
@@ -134,7 +134,7 @@ public class GenTableServiceImpl implements IGenTableService {
     @Override
     @Transactional
     public void importGenTable(List<GenTable> tableList) {
-        String operName = ShiroUtils.getLoginName();
+        String operName = CurrentUserUtils.getSysUser().getLoginName();
         for (GenTable table : tableList) {
             try {
                 String tableName = table.getTableName();

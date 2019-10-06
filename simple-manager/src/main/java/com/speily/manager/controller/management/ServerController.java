@@ -1,7 +1,7 @@
 package com.speily.manager.controller.management;
 
 import com.speily.manager.controller.BaseController;
-import com.speily.manager.monitor.server.pojo.Server;
+import com.speily.manager.controller.management.server.pojo.Server;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

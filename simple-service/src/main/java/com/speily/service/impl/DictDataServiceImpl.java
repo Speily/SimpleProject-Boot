@@ -1,8 +1,8 @@
 package com.speily.service.impl;
 
+import com.speily.common.utils.CurrentUserUtils;
 import com.speily.common.utils.text.Convert;
 import com.speily.entity.DictData;
-import com.speily.service.ShiroUtils;
 import com.speily.mapper.DictDataMapper;
 import com.speily.service.IDictDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,7 +95,7 @@ public class DictDataServiceImpl implements IDictDataService {
      */
     @Override
     public int insertDictData(DictData dictData) {
-        dictData.setCreateBy(ShiroUtils.getLoginName());
+        dictData.setCreateBy(CurrentUserUtils.getSysUser().getLoginName());
         return dictDataMapper.insertDictData(dictData);
     }
 
@@ -107,7 +107,7 @@ public class DictDataServiceImpl implements IDictDataService {
      */
     @Override
     public int updateDictData(DictData dictData) {
-        dictData.setUpdateBy(ShiroUtils.getLoginName());
+        dictData.setUpdateBy(CurrentUserUtils.getSysUser().getLoginName());
         return dictDataMapper.updateDictData(dictData);
     }
 }
