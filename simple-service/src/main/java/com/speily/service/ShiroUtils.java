@@ -28,6 +28,10 @@ public class ShiroUtils {
         getSubject().logout();
     }
 
+    /**
+     * 获取当前登录系统用户
+     * @return user
+     */
     public static User getSysUser() {
         User user = null;
         Object obj = getSubject().getPrincipal();
@@ -47,6 +51,9 @@ public class ShiroUtils {
         subject.runAs(newPrincipalCollection);
     }
 
+    /**
+     * 清除当前登陆者的认证缓存信息
+     */
     public static void clearCachedAuthorizationInfo() {
         RealmSecurityManager rsm = (RealmSecurityManager) SecurityUtils.getSecurityManager();
         UserRealm realm = (UserRealm) rsm.getRealms().iterator().next();

@@ -24,6 +24,7 @@
         <module>simple-mapper</module>
         <module>simple-manager</module>
         <module>simple-framework</module>
+        <module>simple-mobile</module>
     </modules>
 
 
