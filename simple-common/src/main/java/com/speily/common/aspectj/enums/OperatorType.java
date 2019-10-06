@@ -1,4 +1,4 @@
-package com.speily.common.aspectj.lang.enums;
+package com.speily.common.aspectj.enums;
 
 /**
  * 操作人类别

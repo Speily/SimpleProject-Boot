@@ -4,7 +4,7 @@ import com.speily.entity.base.UserConstants;
 import com.speily.common.utils.StringUtils;
 import com.speily.entity.User;
 import com.speily.common.aspectj.annotation.Log;
-import com.speily.common.aspectj.lang.enums.BusinessType;
+import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.utils.ExcelUtil;
 import com.speily.service.ShiroUtils;
 import com.speily.manager.web.page.TableDataInfo;

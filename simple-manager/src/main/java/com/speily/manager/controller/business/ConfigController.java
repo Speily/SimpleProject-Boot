@@ -3,7 +3,7 @@ package com.speily.manager.controller.business;
 import com.speily.entity.base.UserConstants;
 import com.speily.entity.Config;
 import com.speily.common.aspectj.annotation.Log;
-import com.speily.common.aspectj.lang.enums.BusinessType;
+import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.utils.ExcelUtil;
 import com.speily.manager.web.page.TableDataInfo;
 import com.speily.common.result.AjaxResult;

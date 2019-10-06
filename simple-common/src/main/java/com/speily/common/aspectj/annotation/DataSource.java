@@ -1,6 +1,6 @@
 package com.speily.common.aspectj.annotation;
 
-import com.speily.common.aspectj.lang.enums.DataSourceType;
+import com.speily.common.aspectj.enums.DataSourceType;
 
 import java.lang.annotation.*;
 

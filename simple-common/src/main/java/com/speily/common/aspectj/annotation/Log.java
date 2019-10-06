@@ -1,7 +1,7 @@
 package com.speily.common.aspectj.annotation;
 
-import com.speily.common.aspectj.lang.enums.BusinessType;
-import com.speily.common.aspectj.lang.enums.OperatorType;
+import com.speily.common.aspectj.enums.BusinessType;
+import com.speily.common.aspectj.enums.OperatorType;
 
 import java.lang.annotation.*;
 

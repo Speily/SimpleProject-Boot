@@ -4,7 +4,7 @@ import com.speily.entity.base.UserConstants;
 import com.speily.entity.Menu;
 import com.speily.entity.Role;
 import com.speily.common.aspectj.annotation.Log;
-import com.speily.common.aspectj.lang.enums.BusinessType;
+import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.result.AjaxResult;
 import com.speily.common.result.Ztree;
 import com.speily.manager.controller.BaseController;

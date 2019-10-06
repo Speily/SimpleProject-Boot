@@ -4,7 +4,7 @@ import com.speily.common.utils.StringUtils;
 import com.speily.framework.file.FileUploadUtils;
 import com.speily.entity.User;
 import com.speily.common.aspectj.annotation.Log;
-import com.speily.common.aspectj.lang.enums.BusinessType;
+import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.ProjectConfig;
 import com.speily.service.PasswordService;
 import com.speily.common.result.AjaxResult;

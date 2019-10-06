@@ -5,7 +5,7 @@ import com.speily.entity.Role;
 import com.speily.entity.User;
 import com.speily.entity.UserRole;
 import com.speily.common.aspectj.annotation.Log;
-import com.speily.common.aspectj.lang.enums.BusinessType;
+import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.common.utils.ExcelUtil;
 import com.speily.manager.web.page.TableDataInfo;
 import com.speily.common.result.AjaxResult;

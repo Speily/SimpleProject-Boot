@@ -5,7 +5,7 @@ import com.speily.common.utils.StringUtils;
 import com.speily.entity.OperLog;
 import com.speily.entity.User;
 import com.speily.common.aspectj.annotation.Log;
-import com.speily.common.aspectj.lang.enums.BusinessStatus;
+import com.speily.common.aspectj.enums.BusinessStatus;
 import com.speily.common.manager.AsyncManager;
 import com.speily.service.AsyncFactory;
 import com.speily.service.ShiroUtils;

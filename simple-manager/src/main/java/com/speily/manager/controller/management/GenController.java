@@ -4,7 +4,7 @@ import com.speily.common.utils.text.Convert;
 import com.speily.entity.GenTable;
 import com.speily.entity.GenTableColumn;
 import com.speily.common.aspectj.annotation.Log;
-import com.speily.common.aspectj.lang.enums.BusinessType;
+import com.speily.common.aspectj.enums.BusinessType;
 import com.speily.manager.web.page.TableDataInfo;
 import com.speily.common.result.AjaxResult;
 import com.speily.manager.controller.BaseController;
