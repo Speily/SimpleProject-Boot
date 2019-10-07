@@ -307,4 +307,10 @@ public class GenTableServiceImpl implements IGenTableService {
             genTable.setTreeName(treeName);
         }
     }
+
+    public static void main(String[] args) {
+        File file = new File("src");
+        String basePath = file.getAbsolutePath();
+        System.out.println(basePath);
+    }
 }

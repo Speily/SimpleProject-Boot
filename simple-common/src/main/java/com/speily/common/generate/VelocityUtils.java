@@ -21,7 +21,11 @@ public class VelocityUtils {
     /**
      * mybatis空间路径
      */
-    private static final String MYBATIS_PATH = "main/resources/mybatis";
+    private static final String MYBATIS_PATH = "main/resources/mybatis/mapperXml";
+    /**
+     * mybatis空间路径
+     */
+    private static final String MENU_SQL_PATH = "main/resources/mybatis/menuSql";
 
     /**
      * html空间路径
@@ -119,7 +123,6 @@ public class VelocityUtils {
         String businessName = genTable.getBusinessName();
 
         String javaPath = PROJECT_PATH + "/" + StringUtils.replace(packageName, ".", "/");
-        String mybatisPath = MYBATIS_PATH + "/" + moduleName;
         String htmlPath = TEMPLATES_PATH + "/" + moduleName + "/" + businessName;
 
         if (template.contains("entity.java.vm")) {
@@ -133,7 +136,7 @@ public class VelocityUtils {
         } else if (template.contains("controller.java.vm")) {
             fileName = StringUtils.format("{}/manager/controller/business/{}Controller.java ", javaPath, className);
         } else if (template.contains("mapper.xml.vm")) {
-            fileName = StringUtils.format("{}/{}Mapper.xml ", mybatisPath, className);
+            fileName = StringUtils.format("{}/{}Mapper.xml ", MYBATIS_PATH, className);
         } else if (template.contains("list.html.vm")) {
             fileName = StringUtils.format("{}/{}.html", htmlPath, businessName);
         } else if (template.contains("list-tree.html.vm")) {
@@ -145,7 +148,7 @@ public class VelocityUtils {
         } else if (template.contains("edit.html.vm")) {
             fileName = StringUtils.format("{}/edit.html", htmlPath);
         } else if (template.contains("sql.vm")) {
-            fileName = StringUtils.format("{}/{}", mybatisPath, businessName + "Menu.sql");
+            fileName = StringUtils.format("{}/{}", MENU_SQL_PATH, businessName + "Menu.sql");
         }
         return fileName;
     }
