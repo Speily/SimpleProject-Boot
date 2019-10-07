@@ -243,7 +243,7 @@ public class GenTableServiceImpl implements IGenTableService {
                 IOUtils.write(sw.toString(), zip, Constants.UTF8);
 
                 //生成文件到指定模块
-                File file = new File("src");
+                File file = new File("");
                 String basePath = file.getAbsolutePath();
                 FileUtils.touch(new File(basePath + File.separator + src));
                 FileOutputStream os = new FileOutputStream(new File(basePath + File.separator + src));
@@ -309,7 +309,7 @@ public class GenTableServiceImpl implements IGenTableService {
     }
 
     public static void main(String[] args) {
-        File file = new File("src");
+        File file = new File("");
         String basePath = file.getAbsolutePath();
         System.out.println(basePath);
     }

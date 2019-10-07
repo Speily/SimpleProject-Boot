@@ -16,7 +16,7 @@ public class VelocityUtils {
     /**
      * 项目空间路径
      */
-    private static final String PROJECT_PATH = "main/java";
+    private static final String PROJECT_PATH = "src/main/java";
 
     /**
      * mybatis空间路径
@@ -31,6 +31,14 @@ public class VelocityUtils {
      * html空间路径
      */
     private static final String TEMPLATES_PATH = "main/resources/templates";
+
+    /**
+     * 各个module路径
+     */
+    private static final String MODULE_MAIN = "simple-manager/";
+    private static final String MODULE_ENTITY = "simple-entity/";
+    private static final String MODULE_SERVICE = "simple-service/";
+    private static final String MODULE_DAO = "simple-mapper/";
 
     /**
      * 设置模板变量信息（依据DB表信息）
@@ -88,7 +96,7 @@ public class VelocityUtils {
      * @return 模板列表
      */
     public static List<String> getTemplateList(String tplCategory) {
-        List<String> templates = new ArrayList<String>();
+        List<String> templates = new ArrayList<>();
         templates.add("vm/java/entity.java.vm");
         templates.add("vm/java/mapper.java.vm");
         templates.add("vm/java/service.java.vm");
